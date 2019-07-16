@@ -2,10 +2,16 @@
 let buttonDisplay = $("#buttonsgohere")
 let gifsDisplay = $("#gifsgohere")
 
+let submitted = $("#submitbutton")
+let inputBox = $("#inputter")
+
 
 let nature = ["tree", "mountain", "fish", "stream", "hill", "path", "forest", "volcano", "lake", "river"];
 
 function makeButtons() {
+
+        buttonDisplay.empty()
+
     for (let element of nature) {
        let madeButton =  $(`<button class = "clickit" data-name = "${element}">${element}</button>`)
        madeButton.prependTo(buttonDisplay)
@@ -38,6 +44,14 @@ function summonGifs () {
         }
     })
 }
+
+
+submitted.on("click", function () {
+    event.preventDefault()
+    let name = inputBox.val()
+    nature.push(name);
+    makeButtons()
+})
 
 
 
