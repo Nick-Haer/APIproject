@@ -1,0 +1,14 @@
+#displays, #buttonhere {
+    width: 50%;
+    float: left;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+    color: aquamarine;
+}
+
+body {
+    background-image: url(./dark-paths.png);
+}
