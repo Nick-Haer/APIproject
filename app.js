@@ -25,6 +25,8 @@ function summonGifs () {
 
     let queried = $(this).attr("data-name")
 
+    console.log(queried);
+
     let queryUrl = `https://api.giphy.com/v1/gifs/search?api_key=oKCHtfIbY0Dr7JB925gVyaUoyUIT0PzE&q=${queried}&limit=10&offset=0&rating=G&lang=en`
 
 
@@ -34,12 +36,18 @@ function summonGifs () {
     }).then(function(response){
         for (i=0; i <nature.length; i++) {
             console.log(response)
-            let nextSrc = response.data[i].images.fixed_width.url
+            let stillSrc = response.data[i].images.fixed_width_still.url
+            let movSrc = response.data[i].images.fixed_width.url
+
             let nextGif = $(`<img>`)
-            nextGif.attr("src", nextSrc)
+            nextGif.attr("data-still", stillSrc)
+            nextGif.attr("data-move", movSrc)
+            nextGif.attr("src", stillSrc)
+            
             let nextP = $("<p>")
             nextP.text(response.data[i].rating)
             nextP.appendTo(gifsDisplay)
+
             nextGif.appendTo(gifsDisplay)
         }
     })
@@ -56,6 +64,16 @@ submitted.on("click", function () {
 
 
 $(document).on("click", ".clickit", summonGifs)
+
+$(document).on("click", "img", function () {
+    if ($(this).attr("data-move") === $(this).attr("src")) {
+        let insert = $(this).attr("data-still")
+        $(this).attr("src", insert)
+    } else {
+        let insert = $(this).attr("data-move")
+        $(this).attr("src", insert)
+    }
+})
 
 
 

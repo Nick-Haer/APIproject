@@ -1,4 +1,10 @@
-#displays, #buttonhere {
+#displays {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+#buttonhere {
     width: 50%;
     float: left;
 }
@@ -11,4 +17,8 @@
 
 body {
     background-image: url(./dark-paths.png);
+}
+
+img {
+    width: 50%;
 }
