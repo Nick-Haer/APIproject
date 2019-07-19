@@ -46,9 +46,9 @@ function summonGifs () {
             
             let nextP = $("<p>")
             nextP.text(response.data[i].rating)
-            nextP.appendTo(gifsDisplay)
 
             nextGif.appendTo(gifsDisplay)
+            nextP.appendTo(gifsDisplay)
         }
     })
 }
